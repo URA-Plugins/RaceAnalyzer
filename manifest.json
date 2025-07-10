@@ -1,0 +1,13 @@
+{
+  "Author": "离披",
+  "InternalName": "RaceAnalyzer",
+  "Name": "保存比赛相关数据",
+  "Description": "练习赛等",
+  "Changelog": "",
+  "Version": "1.0.0",
+  "Dependencies": [],
+  "Targets": [],
+  "RepositoryUrl": "https://github.com/URA-Plugins/RaceAnalyzer",
+  "DownloadUrl": "https://gh.shuise.dev/github.com/URA-Plugins/RaceAnalyzer/releases/latest/download/RaceAnalyzer.zip",
+  "LastUpdate": "1751719983"
+}
