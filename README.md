@@ -11,8 +11,10 @@ RaceAnalyzer 是 UmamusumeResponseAnalyzer 插件，用于保存房间赛、练�
 
 ## 构建
 
-项目面向 .NET 10，并依赖 `URA-Plugins` 工作区上级构建文件提供宿主项目引用。从本目录执行：
+仓库通过 Git submodule 固定 Host 源码。克隆后在仓库根执行：
 
 ```powershell
-dotnet build RaceAnalyzer.csproj -p:GenerateUraPluginManifestOnBuild=false -p:PackageUraPluginOnBuild=false -p:DeployUraPluginToLocalAppDataOnBuild=false
+git -c core.longpaths=true submodule update --init --recursive
+dotnet build .\RaceAnalyzer.csproj -c Release -m:1 -p:RuntimeIdentifier=win-x64 -p:SelfContained=false -p:PlatformTarget=AnyCPU -p:DeployUraPluginToLocalAppDataOnBuild=false
+dotnet run --project .\tests\RaceAnalyzerSmoke\RaceAnalyzerSmoke.csproj -c Release -p:GenerateUraPluginManifestOnBuild=false -p:PackageUraPluginOnBuild=false -p:DeployUraPluginToLocalAppDataOnBuild=false
 ```
