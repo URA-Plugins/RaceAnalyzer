@@ -14,4 +14,8 @@
     <PluginDescription>练习赛等</PluginDescription>
     <PluginRepositoryUrl>https://github.com/URA-Plugins/RaceAnalyzer</PluginRepositoryUrl>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="UmamusumeResponseAnalyzer" Version="2026.9.1" />
+  </ItemGroup>
+
 </Project>
