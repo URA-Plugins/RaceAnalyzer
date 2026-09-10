@@ -15,5 +15,9 @@ RaceAnalyzer 是 UmamusumeResponseAnalyzer 插件，用于保存房间赛、练�
 
 ```powershell
 dotnet build .\RaceAnalyzer.csproj -c Release -m:1 -p:RuntimeIdentifier=win-x64 -p:SelfContained=false -p:PlatformTarget=AnyCPU -p:DeployUraPluginToLocalAppDataOnBuild=false
-dotnet run --project .\tests\RaceAnalyzerSmoke\RaceAnalyzerSmoke.csproj -c Release -p:GenerateUraPluginManifestOnBuild=false -p:PackageUraPluginOnBuild=false -p:DeployUraPluginToLocalAppDataOnBuild=false
+act workflow_dispatch --artifact-server-path "$env:TEMP/ura-act-artifacts"
 ```
+
+## 验证与发布
+
+在 Windows 仓库根执行 `act workflow_dispatch --artifact-server-path "$env:TEMP/ura-act-artifacts"`。本地与 GitHub 使用同一份 workflow；版本 tag 触发 GitHub Release 发布。环境要求、共用 workflow 本地映射和发布规则见 [URA plugin workflows](https://github.com/URA-Plugins/.github/blob/v1/README.md)。
