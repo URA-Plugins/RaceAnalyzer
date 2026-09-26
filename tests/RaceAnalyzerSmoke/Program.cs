@@ -117,7 +117,7 @@ static async ValueTask TestRaceAnalyzersWriteRaceFiles()
     }
     finally
     {
-        ((IPlugin)plugin).Dispose();
+        await ((IPlugin)plugin).DisposeAsync();
     }
 }
 
@@ -147,9 +147,8 @@ static async ValueTask AssertWritesRaceFile(string source, string scenario, Func
 sealed class ThrowingPluginContext : IPluginContext
 {
     public IApplication Application => throw new InvalidOperationException("RaceAnalyzer must not access the Terminal.Gui application.");
-    public IPluginHostEvents Events => throw new InvalidOperationException("RaceAnalyzer must not subscribe to host events.");
     public IPluginAnalyzerRegistry Analyzers => throw new InvalidOperationException("RaceAnalyzer must not register runtime analyzers.");
     public bool IsPluginAvailable(string internalName) => false;
-    public void RunBackground(Func<CancellationToken, ValueTask> operation) =>
-        throw new InvalidOperationException("RaceAnalyzer must not run background operations.");
+    public void ReportBackgroundFailure(Exception error) =>
+        throw new InvalidOperationException("RaceAnalyzer background work failed.", error);
 }
