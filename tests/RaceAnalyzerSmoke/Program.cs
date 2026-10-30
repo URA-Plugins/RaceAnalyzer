@@ -3,6 +3,10 @@ using Terminal.Gui.App;
 using UmamusumeResponseAnalyzer.Plugin;
 using RacePlugin = RaceAnalyzer.RaceAnalyzer;
 
+RepositoryChecks.Run();
+using (var ui = new WorkspaceSmokeSession())
+    PluginLifecycleSmoke.Run(ui);
+
 var originalCwd = Directory.GetCurrentDirectory();
 var workspace = Path.Combine(Path.GetTempPath(), "ura-race-smoke-" + Guid.NewGuid().ToString("N"));
 Directory.CreateDirectory(workspace);
